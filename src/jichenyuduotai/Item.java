@@ -15,4 +15,7 @@ public class Item {
     public void print(){
         System.out.print(title);
     }
+    public String toString(){
+        return "我是父类Item";
+    }
 }
