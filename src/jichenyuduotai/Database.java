@@ -33,13 +33,15 @@ public class Database {
         db.add(new CD("DEF","def",4,60,"..."));
         db.add(new CD("GHI","ghi",4,60,"..."));
         db.add(new DVD("xxx","aaa",60,"..."));
+        db.add(new VideoGame("ddd",10,true,"...",4));
         db.list();
+        System.out.println("***********************************************************");
         Item a1=new Item("a",20,false,"...");
         DVD a2=new DVD("aaa","bbb",30,"...");
 //        a1=a2;
 //        System.out.println(a1);
-        DVD a3=(DVD)a1;
-        System.out.println(a3);
+//        DVD a3=(DVD)a1;
+//        System.out.println(a3);
     }
 
 }
