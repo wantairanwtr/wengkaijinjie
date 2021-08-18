@@ -1,10 +1,12 @@
 package castle;
 
-import java.util.Scanner;
+import shejiyuanze.castle.Handler;
 
-public class Game {
+import java.util.Scanner;
+import java.util.HashMap;
+public class Game{
     private Room currentRoom;
-        
+    private HashMap<String, Handler>handlers=new HashMap<String,Handler>();
     public Game() 
     {
         createRooms();
@@ -22,12 +24,16 @@ public class Game {
         bedroom = new Room("卧室");
         
         //	初始化房间的出口
-        outside.setExits(null, lobby, study, pub);
-        lobby.setExits(null, null, null, outside);
-        pub.setExits(null, outside, null, null);
-        study.setExits(outside, bedroom, null, null);
-        bedroom.setExits(null, null, null, study);
-
+        outside.setExits("east",lobby);
+        outside.setExits("south",study);
+        outside.setExits("west",pub);
+        lobby.setExits("west",outside);
+        pub.setExits("east", outside);
+        study.setExits("north",outside);
+        study.setExits("east",bedroom);
+        bedroom.setExits("west", study);
+        lobby.setExits("up",pub);
+        pub.setExits("down",lobby);
         currentRoom = outside;  //	从城堡门外开始
     }
 
@@ -37,17 +43,7 @@ public class Game {
         System.out.println("这是一个超级无聊的游戏。");
         System.out.println("如果需要帮助，请输入 'help' 。");
         System.out.println();
-        System.out.println("现在你在" + currentRoom);
-        System.out.print("出口有：");
-        if(currentRoom.northExit != null)
-            System.out.print("north ");
-        if(currentRoom.eastExit != null)
-            System.out.print("east ");
-        if(currentRoom.southExit != null)
-            System.out.print("south ");
-        if(currentRoom.westExit != null)
-            System.out.print("west ");
-        System.out.println();
+        showPrompt();
     }
 
     // 以下为用户命令
@@ -60,37 +56,22 @@ public class Game {
 
     private void goRoom(String direction) 
     {
-        Room nextRoom = null;
-        if(direction.equals("north")) {
-            nextRoom = currentRoom.northExit;
-        }
-        if(direction.equals("east")) {
-            nextRoom = currentRoom.eastExit;
-        }
-        if(direction.equals("south")) {
-            nextRoom = currentRoom.southExit;
-        }
-        if(direction.equals("west")) {
-            nextRoom = currentRoom.westExit;
-        }
+        Room nextRoom = currentRoom.getExit(direction);
 
         if (nextRoom == null) {
             System.out.println("那里没有门！");
         }
         else {
             currentRoom = nextRoom;
-            System.out.println("你在" + currentRoom);
-            System.out.print("出口有: ");
-            if(currentRoom.northExit != null)
-                System.out.print("north ");
-            if(currentRoom.eastExit != null)
-                System.out.print("east ");
-            if(currentRoom.southExit != null)
-                System.out.print("south ");
-            if(currentRoom.westExit != null)
-                System.out.print("west ");
-            System.out.println();
+            showPrompt();
+
         }
+    }
+    public void showPrompt(){
+        System.out.println("你在" + currentRoom);
+        System.out.print("出口有: ");
+        System.out.print(currentRoom.getExitDesc());
+        System.out.println();
     }
 	
 	public static void main(String[] args) {
