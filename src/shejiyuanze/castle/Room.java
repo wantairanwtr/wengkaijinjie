@@ -1,4 +1,4 @@
-package castle;
+package shejiyuanze.castle;
 import java.util.HashMap;
 public class Room {
     private String description;
