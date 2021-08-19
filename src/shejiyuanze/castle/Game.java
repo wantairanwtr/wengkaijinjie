@@ -95,8 +95,7 @@ public class Game{
     }
 	
 	public static void main(String[] args) {
-
-		Game game = new Game();
+        Game game = new Game();
 		game.printWelcome();
 		game.play();
         System.out.println("感谢您的光临。再见！");

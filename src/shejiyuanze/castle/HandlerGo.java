@@ -5,6 +5,6 @@ public class HandlerGo extends Handler{
     }
     @Override
     public void doCmd(String value){
-        game.goRoom(value);
+        super.game.goRoom(value);
     }
 }
