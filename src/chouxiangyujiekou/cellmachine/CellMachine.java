@@ -1,10 +1,10 @@
-package cellmachine;
+package chouxiangyujiekou.cellmachine;
 
 import javax.swing.JFrame;
 
-import cell.Cell;
-import field.Field;
-import field.View;
+import chouxiangyujiekou.cell.Cell;
+import chouxiangyujiekou.field.Field;
+import chouxiangyujiekou.field.View;
 
 public class CellMachine {
 

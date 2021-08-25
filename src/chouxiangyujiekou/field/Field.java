@@ -1,8 +1,8 @@
-package field;
+package chouxiangyujiekou.field;
 
 import java.util.ArrayList;
 
-import cell.Cell;
+import chouxiangyujiekou.cell.Cell;
 
 public class Field {
 	private int width;
