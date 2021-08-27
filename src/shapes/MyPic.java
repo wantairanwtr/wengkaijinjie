@@ -1,5 +1,7 @@
 package shapes;
 
+import java.awt.*;
+
 public class MyPic {
 	public static void main(String[] args) 
 	{
@@ -14,6 +16,15 @@ public class MyPic {
 		pic.add(t1);
 		pic.add(l1);
 		pic.add(c2);
-		pic.draw();	
+		pic.draw();
+		System.out.println(new Shape(){
+			@Override
+			public void draw(Graphics g) {
+			}
+			@Override
+			public String toString(){
+				return "你好我好大家好啊";
+			}
+		});
 	}
 }

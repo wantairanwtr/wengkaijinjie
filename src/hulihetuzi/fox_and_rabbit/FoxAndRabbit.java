@@ -1,8 +1,11 @@
 package hulihetuzi.fox_and_rabbit;
 
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
 import hulihetuzi.animal.*;
 import hulihetuzi.cell.Cell;
@@ -11,6 +14,16 @@ import hulihetuzi.field.*;
 public class FoxAndRabbit {
     private Field theField;
     private View theView;
+    private JFrame frame;
+
+    private class stepListener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("按下了");
+            step();
+            frame.repaint();
+        }
+    }
 
     public FoxAndRabbit(int size) {
         theField = new Field(size, size);
@@ -25,11 +38,14 @@ public class FoxAndRabbit {
             }
         }
         theView = new View(theField);
-        JFrame frame = new JFrame();
+        frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
         frame.setTitle("Cells");
         frame.add(theView);
+        JButton btnstep=new JButton("单步");
+        frame.add(btnstep, BorderLayout.NORTH);
+        btnstep.addActionListener(new stepListener());
         frame.pack();
         frame.setVisible(true);
     }
@@ -86,6 +102,6 @@ public class FoxAndRabbit {
 
     public static void main(String[] args) {
         FoxAndRabbit fnr = new FoxAndRabbit(50);
-        fnr.start(100);
+//        fnr.start(100);
     }
 }
