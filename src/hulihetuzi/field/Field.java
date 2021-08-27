@@ -30,8 +30,8 @@ public class Field {
 
     public Cell place(int row, int col, Cell cell) {
         // !这里的Cell o并非Cell类的对象,而是实现了Cell接口的对象
-        field[row][col] = cell;
         Cell ret = field[row][col];
+        field[row][col]=cell;
         return ret;
     }
 
