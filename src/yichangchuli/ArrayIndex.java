@@ -24,6 +24,7 @@ public class ArrayIndex {
             System.out.println("这是K函数");
             throw e;
         }
+        System.out.println("k函数已经执行完了");
     }
     public static void main(String[] args) {
         int[]a=new int[10];
